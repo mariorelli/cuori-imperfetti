@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuori Imperfetti | Saga Romance</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#030303;
+  --black2:#080808;
+  --gold:#d6ad55;
+  --gold2:#f0d28a;
+  --ivory:#f8f1df;
+  --muted:#cbbd9c;
+  --red:#730000;
+  --red2:#a30b13;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:#030303;
+  color:var(--ivory);
+  font-family:'Montserrat', Arial, sans-serif;
+}
+
+.page {
+  width:100%;
+  min-height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top, rgba(214,173,85,.18), transparent 35%),
+    linear-gradient(180deg,#030303,#050505 55%,#000);
+}
+
+.hero {
+  min-height:100vh;
+  position:relative;
+  padding:34px 24px 36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 45%, rgba(0,0,0,.92) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.50) 100%),
+    url('images/volume-1.jpg') center top/cover no-repeat;
+  opacity:1;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+}
+
+.author {
+  font-family:'Cinzel', serif;
+  color:var(--gold2);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-align:center;
+  margin-bottom:22px;
+  text-shadow:0 2px 12px #000;
+}
+
+.logo {
+  font-family:'Cinzel', serif;
+  font-size:54px;
+  line-height:.92;
+  letter-spacing:.07em;
+  margin:0;
+  text-shadow:0 4px 20px #000;
+}
+
+.logo .top {
+  display:block;
+  color:var(--gold);
+}
+
+.logo .bottom {
+  display:block;
+  color:var(--ivory);
+}
+
+.divider {
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin:18px 0;
+}
+
+.claim {
+  font-family:'Cormorant Garamond', serif;
+  font-size:23px;
+  line-height:1.18;
+  color:var(--ivory);
+  margin:18px 0 20px;
+  text-shadow:0 3px 14px #000;
+}
+
+.claim strong {
+  color:var(--gold2);
+  font-weight:700;
+}
+
+.cta {
+  width:100%;
+  max-width:390px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:18px 0 0;
+  padding:15px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--ivory);
+  font-family:'Cinzel', serif;
+  letter-spacing:.08em;
+  font-weight:700;
+  font-size:17px;
+  background:linear-gradient(135deg, rgba(115,0,0,.96), rgba(163,11,19,.92));
+  border:1px solid rgba(214,173,85,.85);
+  box-shadow:0 16px 34px rgba(0,0,0,.55), 0 0 24px rgba(115,0,0,.25);
+}
+
+.hero-review {
+  margin-top:22px;
+  width:100%;
+  max-width:410px;
+  padding:20px 20px;
+  border:1px solid rgba(214,173,85,.76);
+  border-radius:10px;
+  background:linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.82));
+  box-shadow:0 16px 34px rgba(0,0,0,.52);
+  backdrop-filter:blur(4px);
+}
+
+.stars {
+  color:var(--gold);
+  letter-spacing:.14em;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.hero-review p,
+.review-card p {
+  font-family:'Cormorant Garamond', serif;
+  font-size:23px;
+  line-height:1.16;
+  margin:0;
+  font-style:italic;
+  color:var(--ivory);
+}
+
+.name {
+  margin-top:14px;
+  font-family:'Cinzel', serif;
+  color:var(--gold2);
+  font-size:15px;
+  letter-spacing:.10em;
+}
+
+.role {
+  margin-top:4px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.section {
+  max-width:1080px;
+  margin:0 auto;
+  padding:44px 22px;
+}
+
+.section-title {
+  font-family:'Cinzel', serif;
+  text-align:center;
+  color:var(--gold);
+  font-size:25px;
+  letter-spacing:.11em;
+  margin:0 0 24px;
+}
+
+.emotion {
+  font-family:'Cormorant Garamond', serif;
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+  font-size:27px;
+  line-height:1.18;
+  color:var(--ivory);
+}
+
+.emotion strong {
+  color:var(--gold);
+  font-family:'Cinzel', serif;
+  letter-spacing:.08em;
+  font-size:24px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.books {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+}
+
+.book {
+  border:1px solid rgba(214,173,85,.38);
+  border-radius:10px;
+  padding:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  box-shadow:0 20px 44px rgba(0,0,0,.58);
+}
+
+.book img {
+  width:100%;
+  display:block;
+  border-radius:7px;
+  box-shadow:0 18px 36px rgba(0,0,0,.7);
+}
+
+.book-label {
+  text-align:center;
+  margin-top:14px;
+  font-family:'Cinzel', serif;
+  color:var(--gold2);
+  letter-spacing:.10em;
+  font-size:14px;
+}
+
+.reviews {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.review-card {
+  text-align:center;
+  padding:22px 18px;
+  border:1px solid rgba(214,173,85,.58);
+  border-radius:10px;
+  background:linear-gradient(180deg, rgba(16,16,17,.96), rgba(5,5,5,.98));
+  box-shadow:0 16px 34px rgba(0,0,0,.45);
+}
+
+.info {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  border:1px solid rgba(214,173,85,.35);
+  border-radius:10px;
+  padding:20px;
+  background:rgba(0,0,0,.45);
+}
+
+.info-item {
+  text-align:center;
+  font-family:'Cinzel', serif;
+  color:var(--gold2);
+  font-size:16px;
+  letter-spacing:.06em;
+  line-height:1.35;
+}
+
+.final {
+  text-align:center;
+  padding-bottom:58px;
+}
+
+.final p {
+  font-family:'Cinzel', serif;
+  color:var(--gold);
+  font-size:20px;
+  letter-spacing:.08em;
+  line-height:1.45;
+  max-width:720px;
+  margin:0 auto 22px;
+}
+
+.final .cta {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+@media(max-width:420px) {
+  .hero {
+    padding:30px 22px;
+    align-items:center;
+  }
+
+  .author {
+    font-size:11px;
+    letter-spacing:.22em;
+  }
+
+  .logo {
+    font-size:46px;
+  }
+
+  .claim {
+    font-size:22px;
+  }
+
+  .cta {
+    max-width:320px;
+    font-size:14px;
+    padding:14px 14px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-review {
+    max-width:320px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-review p,
+  .review-card p {
+    font-size:22px;
+  }
+
+  .emotion {
+    font-size:25px;
+  }
+}
+
+@media(min-width:760px) {
+  .hero-content {
+    max-width:760px;
+  }
+
+  .logo {
+    font-size:82px;
+  }
+
+  .claim {
+    max-width:560px;
+  }
+
+  .books {
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .reviews {
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .info {
+    grid-template-columns:1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="author">LA SAGA ROMANCE DI<br>MARIO RELLI</div>
+
+    <h1 class="logo">
+      <span class="top">CUORI</span>
+      <span class="bottom">IMPERFETTI</span>
+    </h1>
+
+    <div class="divider"></div>
+
+    <div class="claim">
+      🖤 La saga romance italiana che sta conquistando sempre più lettrici
+    </div>
+
+    <a class="cta" href="https://amzn.eu/d/0bSRgWD6" target="_blank" rel="noopener">♡ INIZIA DAL VOLUME 1</a>
+
+    <div class="hero-review">
+      <div class="stars">★★★★★</div>
+      <p>“Mi ha tenuta incollata fino alla fine.”</p>
+      <div class="name">MICHELA</div>
+      <div class="role">Lettrice Amazon</div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <p class="emotion">
+    <strong>TRE CITTÀ. TRE LIBRI.</strong>
+    Un amore che non avrebbe mai dovuto esistere.<br><br>
+    Si sono desiderati quando non avrebbero dovuto.<br>
+    Si sono scelti quando era troppo tardi.<br>
+    Si sono persi quando si amavano ancora.
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">LA TRILOGIA</h2>
+
+  <div class="books">
+    <div class="book">
+      <img src="images/volume-1.jpg" alt="Non Dovevo Desiderarti">
+      <div class="book-label">VOLUME 1 · FIRENZE</div>
+    </div>
+
+    <div class="book">
+      <img src="images/volume-2.jpg" alt="Non Dovevo Sceglierti">
+      <div class="book-label">VOLUME 2 · VENEZIA</div>
+    </div>
+
+    <div class="book">
+      <img src="images/volume-3.jpg" alt="Non Dovevo Perderti">
+      <div class="book-label">VOLUME 3 · ROMA</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">RECENSIONI</h2>
+
+  <div class="reviews">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>“Mi ha tenuta incollata fino alla fine.”</p>
+      <div class="name">MICHELA</div>
+      <div class="role">Lettrice Amazon</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>“Finale che ti fa voler leggere il secondo volume.”</p>
+      <div class="name">ALESSIO</div>
+      <div class="role">Lettore Amazon</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>“I sentimenti si costruiscono poco alla volta e alcuni dialoghi restano impressi anche dopo la lettura.”</p>
+      <div class="name">SABRINA</div>
+      <div class="role">Lettrice Amazon</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="info">
+    <div class="info-item">📖 DISPONIBILE SU<br>KINDLE UNLIMITED</div>
+    <div class="info-item">📱 LEGGIBILE DA SMARTPHONE,<br>TABLET E KINDLE</div>
+  </div>
+</section>
+
+<section class="section final">
+  <p>TRE CITTÀ. TRE LIBRI. UNA STORIA CHE NON TI LASCERÀ ANDARE.</p>
+  <a class="cta" href="https://amzn.eu/d/0bSRgWD6" target="_blank" rel="noopener">♡ INIZIA DAL VOLUME 1</a>
+</section>
+
+</div>
+</body>
+</html>
