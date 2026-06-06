@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuori Imperfetti | Mario Relli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:wght@700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #040302;
+  --gold: #c9a84c;
+  --gold-l: #e8c96a;
+  --gold-dim: rgba(201,168,76,.15);
+  --ivory: #f4ecda;
+  --muted: #b0a088;
+  --red: #7a0000;
+  --red2: #9e0e18;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--ivory);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden}
+
+/* ── HERO — primo schermo mobile ── */
+.hero{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:28px 20px 8px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('images/volume-1.jpg') center 35%/cover no-repeat;
+  filter:brightness(1.0) saturate(1.1);
+  z-index:0;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(0deg, rgba(4,3,2,1) 0%, rgba(4,3,2,.95) 15%, rgba(4,3,2,.2) 35%, transparent 55%),
+    linear-gradient(180deg, rgba(4,3,2,1) 0%, rgba(4,3,2,.95) 8%, transparent 22%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;max-width:500px;
+  text-align:center;
+}
+
+/* Hook emotivo */
+.hero-hook{
+  font-size:clamp(17px,4.5vw,22px);
+  font-style:italic;
+  color:rgba(244,236,218,.85);
+  line-height:1.45;
+  margin-bottom:20px;
+  letter-spacing:.01em;
+}
+.hero-hook em{color:var(--gold-l);font-style:italic}
+
+/* Titolo */
+.hero-title{
+  font-family:'Cinzel',serif;
+  line-height:.88;
+  letter-spacing:.04em;
+  text-shadow:0 6px 28px rgba(0,0,0,.9);
+  margin-bottom:10px;
+}
+.hero-title .cuori{display:block;font-size:clamp(52px,13vw,82px);color:var(--gold-l);font-family:'Cinzel',serif;}
+.hero-title .imp{display:block;font-size:clamp(42px,10.5vw,68px);color:var(--ivory)}
+
+.hero-author{
+  font-family:'Cinzel',serif;
+  font-size:clamp(11px,2.8vw,14px);
+  letter-spacing:.28em;
+  color:var(--muted);
+  margin-bottom:22px;
+}
+
+/* Kindle badge */
+.kindle-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.4);
+  border-radius:30px;
+  padding:8px 18px;
+  font-family:'Cinzel',serif;
+  font-size:clamp(11px,2.8vw,13px);
+  letter-spacing:.12em;
+  color:var(--gold-l);
+  margin-bottom:18px;
+}
+
+/* CTA principale */
+.btn-main{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;max-width:420px;margin:0 auto 12px;
+  padding:18px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:clamp(15px,3.8vw,18px);
+  font-weight:700;letter-spacing:.1em;
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  color:var(--ivory);
+  border:1px solid rgba(201,168,76,.75);
+  box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 30px rgba(120,0,0,.25);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 22px 50px rgba(0,0,0,.65)}
+
+.btn-secondary{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;max-width:420px;margin:0 auto;
+  padding:14px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:clamp(13px,3.2vw,15px);
+  font-weight:600;letter-spacing:.1em;
+  background:transparent;
+  color:var(--gold-l);
+  border:1px solid rgba(201,168,76,.45);
+  transition:border-color .2s,background .2s;
+}
+.btn-secondary:hover{background:rgba(201,168,76,.08);border-color:rgba(201,168,76,.7)}
+
+/* ── SECTION COMUNE ── */
+.section{max-width:960px;margin:0 auto;padding:24px 22px}
+.section-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(15px,3.5vw,20px);
+  letter-spacing:.22em;color:var(--gold);
+  text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-bottom:32px;
+}
+.section-title::before,.section-title::after{
+  content:'';flex:1;max-width:80px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.section-title::after{background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* ── STORIA — differenziatore ── */
+.story-bg{
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.07) 0%, transparent 60%),
+    linear-gradient(180deg,var(--black),#0c0906,var(--black));
+  padding:16px 22px 28px;
+}
+.story-inner{max-width:640px;margin:0 auto;text-align:center;}
+
+.story-intro{
+  font-size:clamp(19px,4.8vw,26px);
+  font-style:italic;line-height:1.5;
+  color:var(--ivory);margin-bottom:28px;
+}
+.story-intro strong{color:var(--gold-l);font-style:normal}
+
+.cities-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;margin:32px 0;
+}
+.city-card{
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:10px;
+  padding:20px 12px;
+  background:rgba(0,0,0,.35);
+  text-align:center;
+}
+.city-flag{font-size:28px;display:block;margin-bottom:8px}
+.city-name{
+  font-family:'Cinzel',serif;
+  font-size:clamp(13px,3vw,15px);
+  letter-spacing:.15em;color:var(--gold);
+  display:block;margin-bottom:6px;
+}
+.city-sub{
+  font-size:clamp(13px,3vw,16px);
+  font-style:italic;color:var(--muted);
+  line-height:1.3;
+}
+
+.differentiator{
+  margin-top:28px;
+  font-size:clamp(17px,4.2vw,22px);
+  font-style:italic;
+  color:var(--ivory);line-height:1.5;
+}
+.differentiator strong{color:var(--gold-l);font-style:normal}
+.script{font-family:'Great Vibes',cursive;font-size:1.3em;color:var(--gold-l)}
+.playfair{font-family:'Playfair Display',serif;}
+
+/* ── LE FRASI ── */
+.quotes-grid{
+  display:grid;gap:16px;
+  grid-template-columns:1fr;
+}
+.quote-card{
+  border-left:3px solid var(--gold);
+  padding:18px 20px;
+  background:rgba(0,0,0,.3);
+  border-radius:0 8px 8px 0;
+}
+.quote-card p{
+  font-size:clamp(18px,4.2vw,23px);
+  font-style:italic;line-height:1.3;
+  color:var(--ivory);
+}
+.quote-card span{
+  display:block;margin-top:8px;
+  font-family:'Cinzel',serif;
+  font-size:12px;letter-spacing:.15em;
+  color:var(--gold);
+}
+
+/* ── RECENSIONI ── */
+.reviews-grid{display:grid;gap:16px;grid-template-columns:1fr}
+.review-card{
+  position:relative;
+  border:1px solid rgba(201,168,76,.6);
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(12,10,8,.96),rgba(4,3,2,.98));
+  padding:24px;
+  box-shadow:0 14px 32px rgba(0,0,0,.4);
+  overflow:hidden;
+}
+.review-card::before{
+  content:'\201C';position:absolute;right:16px;top:8px;
+  font-family:Georgia,serif;font-size:80px;
+  color:rgba(201,168,76,.12);line-height:1;pointer-events:none;
+}
+.stars{color:var(--gold);font-size:18px;letter-spacing:.1em;margin-bottom:12px}
+.review-card blockquote{
+  font-size:clamp(19px,4.5vw,23px);
+  line-height:1.22;font-style:italic;
+  color:var(--ivory);margin-bottom:14px;
+  position:relative;z-index:1;
+}
+.reviewer-name{
+  font-family:'Cinzel',serif;font-size:13px;
+  letter-spacing:.12em;color:var(--gold-l);
+}
+.reviewer-role{font-size:15px;color:var(--muted);margin-top:2px}
+
+/* ── BOOKS GRID ── */
+.books-section{
+  background:linear-gradient(180deg,var(--black),#0a0705,var(--black));
+  padding:24px 22px;
+}
+.books-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;max-width:880px;margin:0 auto;
+  align-items:start;
+}
+.book-card{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.book-cover-wrap img{
+  width:100%;aspect-ratio:2/3;object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 22px 50px rgba(0,0,0,.75),3px 3px 0 rgba(0,0,0,.5);
+  transition:transform .3s,box-shadow .3s;
+  display:block;
+}
+.book-card:hover .book-cover-wrap img{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 30px 60px rgba(0,0,0,.8);
+}
+.vol-badge{
+  font-family:'Cinzel',serif;font-size:11px;
+  letter-spacing:.2em;color:var(--muted);margin-bottom:2px;
+}
+.book-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(13px,3.2vw,17px);
+  font-style:italic;line-height:1.2;color:var(--ivory);
+}
+.book-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;padding:11px 8px;
+  border-radius:7px;text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:clamp(10px,2.2vw,13px);
+  font-weight:700;letter-spacing:.08em;
+  transition:transform .2s;
+}
+.book-btn:hover{transform:translateY(-2px)}
+.book-btn-red{
+  background:linear-gradient(135deg,var(--red),var(--red2));
+  color:var(--ivory);
+  border:1px solid rgba(201,168,76,.6);
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+/* ── INFO ── */
+.info-bar{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:10px;padding:22px 16px;
+  background:rgba(0,0,0,.3);
+  max-width:600px;margin:0 auto;
+}
+.info-item{
+  text-align:center;
+  font-family:'Cinzel',serif;
+  font-size:clamp(12px,2.8vw,15px);
+  line-height:1.5;letter-spacing:.06em;
+  color:var(--gold-l);
+}
+
+/* ── FINAL CTA ── */
+.final-cta{
+  text-align:center;
+  padding:40px 22px 60px;
+  background:radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,transparent 70%);
+}
+.final-cta .hero-title{margin-bottom:8px}
+.gold-line{
+  width:50%;max-width:280px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:16px auto 24px;
+}
+.final-tagline{
+  font-family:'Cinzel',serif;
+  font-size:clamp(12px,2.8vw,15px);
+  letter-spacing:.18em;color:var(--muted);
+  margin-bottom:32px;line-height:1.6;
+}
+.final-btns{
+  display:flex;flex-direction:column;
+  align-items:center;gap:14px;
+  max-width:420px;margin:0 auto;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:24px 20px;
+  border-top:1px solid rgba(201,168,76,.12);
+  font-size:14px;color:var(--muted);letter-spacing:.06em;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:500px){
+  .cities-grid{grid-template-columns:1fr;gap:10px}
+  .books-grid{grid-template-columns:1fr;gap:40px;max-width:280px;margin:0 auto}
+  .info-bar{grid-template-columns:1fr}
+}
+@media(min-width:760px){
+  .reviews-grid{grid-template-columns:1fr 1fr}
+  .quotes-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── FADE IN ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{animation:fadeUp .7s ease both}
+.hero-inner>*:nth-child(1){animation-delay:.1s}
+.hero-inner>*:nth-child(2){animation-delay:.2s}
+.hero-inner>*:nth-child(3){animation-delay:.3s}
+.hero-inner>*:nth-child(4){animation-delay:.4s}
+.hero-inner>*:nth-child(5){animation-delay:.5s}
+.hero-inner>*:nth-child(6){animation-delay:.6s}
+.hero-inner>*:nth-child(7){animation-delay:.7s}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QXGJ6644NV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QXGJ6644NV');
+</script>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+
+    <p class="hero-hook">
+      <span style="font-family:'Great Vibes',cursive;font-size:clamp(32px,8vw,52px);color:#fff;display:block;margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,.9),0 0 30px rgba(0,0,0,.8);">&ldquo;Dimmi di fermarmi.&rdquo;</span>
+      Lei chiuse gli occhi.<br>
+      <em>Silenzio.</em>
+    </p>
+
+    <h1 class="hero-title">
+      <span class="cuori">CUORI</span>
+      <span class="imp">IMPERFETTI</span>
+    </h1>
+    <p class="hero-author">TRE CITTÀ. UNA STORIA.</p>
+
+    <a class="btn-main" href="https://amzn.eu/d/07qnYPeI" target="_blank" rel="noopener">
+      ♡ &nbsp;INIZIA A LEGGERE — VOL. 1
+    </a>
+
+    <a class="btn-secondary" href="#collana">
+      Scopri tutta la collana &darr;
+    </a>
+
+    <div style="width:100%;max-width:500px;margin:24px auto;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,4vw,21px);font-style:italic;color:rgba(244,236,218,.85);line-height:1.8;margin-bottom:12px;">
+        La mattina dopo Elena si svegliò <strong style="color:var(--ivory);font-style:normal;">prima di Lorenzo.</strong><br>
+        Per qualche secondo rimase immobile nel letto,<br>
+        cercando di capire perché il petto le sembrasse<br>
+        <strong style="color:var(--gold-l);font-style:normal;">improvvisamente così leggero.</strong><br>
+        Poi sentì il <em>respiro lento</em> di Lorenzo accanto a lei.<br><br>
+        <strong style="color:var(--ivory);font-size:1.15em;letter-spacing:.03em;">E ricordò.</strong>
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,4vw,21px);font-style:italic;color:rgba(244,236,218,.85);line-height:1.8;margin-bottom:12px;">
+        Stava riempiendo la moka quando<br>
+        <strong style="color:var(--ivory);font-style:normal;">il telefono vibrò sul tavolo.</strong><br>
+        Abbassò lo sguardo sul display.<br><br>
+        <strong style="color:var(--gold-l);font-size:1.2em;letter-spacing:.02em;">E il sangue le si gelò nelle vene.</strong>
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(19px,4.8vw,26px);color:var(--ivory);line-height:1.5;margin-bottom:0;font-style:italic;">
+        Il passato non bussava mai con delicatezza.<br>
+        <strong style="font-style:normal;color:var(--gold-l);font-size:1.1em;letter-spacing:.04em;">Entrava.</strong>
+      </p>
+      <div style="width:50px;height:1px;background:var(--gold);margin:20px auto;opacity:.5;"></div>
+    </div>
+  </div>
+</header>
+<!-- ══ STORIA — differenziatore ════════════════════════════ -->
+<div class="story-bg">
+  <div class="story-inner">
+
+    <h2 class="section-title" style="margin-bottom:20px;">LA STORIA</h2>
+
+    <p class="story-intro">
+      Elena scappa da Firenze.<br>
+      Poi da Venezia.<br>
+      Poi da Roma.<br><br>
+      <strong>Ma ogni volta che prova a sparire,<br>
+      lui è ancora lì.</strong>
+    </p>
+
+    <div class="cities-grid">
+      <div class="city-card">
+        <span class="city-flag">🏛</span>
+        <span class="city-name">FIRENZE</span>
+        <span class="city-sub">Un affresco nascosto.<br>Un uomo impossibile da ignorare.</span>
+      </div>
+      <div class="city-card">
+        <span class="city-flag">🚤</span>
+        <span class="city-name">VENEZIA</span>
+        <span class="city-sub">Un palazzo con segreti.<br>Un passato che torna.</span>
+      </div>
+      <div class="city-card">
+        <span class="city-flag">🌹</span>
+        <span class="city-name">ROMA</span>
+        <span class="city-sub">Una verità pericolosa.<br>Una scelta impossibile.</span>
+      </div>
+    </div>
+
+    <p class="differentiator">
+      Non è solo un romance.<br><br>
+      È una storia di <strong>paura di essere amata</strong>,<br>
+      di segreti sepolti sotto gli affreschi,<br>
+      di un uomo che non dice <em>"ti amo"</em>…<br><br>
+      <strong>ma che ricorda come prendi il caffè.</strong><br><br><span class="script" style="font-size:clamp(28px,7vw,42px);">"Dimmi di fermarmi."</span></strong>
+    </p>
+
+  </div>
+</div>
+
+<!-- ══ FRASI DAL LIBRO ══════════════════════════════════════ -->
+<section class="section" style="padding-top:24px;padding-bottom:24px;">
+  <h2 class="section-title">DAL LIBRO</h2>
+  <div class="quotes-grid">
+    <div class="quote-card">
+      <p>"Non le disse ti amo. Le portò il caffè senza zucchero. Perché l'aveva osservata il giorno prima."</p>
+      <span>Vol. 1 — Firenze</span>
+    </div>
+    <div class="quote-card">
+      <p>"Dimmi di fermarmi." Lei chiuse gli occhi. Non disse niente.</p>
+      <span>Vol. 1 — Firenze</span>
+    </div>
+    <div class="quote-card">
+      <p>"La persona giusta non ti porta via spazio. Ti fa sentire finalmente libero di restare."</p>
+      <span>Vol. 1 — Epilogo</span>
+    </div>
+    <div class="quote-card">
+      <p>"Io resto solo se posso scegliere di farlo." E lui annuì. E lei gli credette davvero.</p>
+      <span>Vol. 2 — Venezia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RECENSIONI ════════════════════════════════════════════ -->
+<section class="section" >
+  <h2 class="section-title">RECENSIONI</h2>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I sentimenti si costruiscono poco alla volta e alcuni dialoghi restano impressi anche dopo la lettura."</blockquote>
+      <div class="reviewer-name">SABRINA</div>
+      <div class="reviewer-role">Lettrice Amazon</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"È stato il primo libro che ho letto di questo autore e mi ha sorpresa positivamente. Sicuramente leggerò anche il secondo volume."</blockquote>
+      <div class="reviewer-name">MARIA ANGELA</div>
+      <div class="reviewer-role">Lettrice Amazon</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Finale che ti fa voler leggere il secondo volume subito."</blockquote>
+      <div class="reviewer-name">ALESSIO</div>
+      <div class="reviewer-role">Lettore Amazon</div>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Mi ha tenuta incollata fino alla fine."</blockquote>
+      <div class="reviewer-name">MICHELA</div>
+      <div class="reviewer-role">Lettrice Amazon</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ LIBRI ══════════════════════════════════════════════════ -->
+<div class="books-section" id="collana">
+  <div style="max-width:880px;margin:0 auto;">
+    <h2 class="section-title">LA COLLANA</h2>
+    <div class="books-grid">
+
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img src="images/volume-1.jpg" alt="Non Dovevo Desiderarti — Volume 1" loading="lazy">
+        </div>
+        <p class="vol-badge">VOLUME 1 · FIRENZE</p>
+        <p class="book-title"><span style="font-family:'Playfair Display',serif;font-weight:700;">Non Dovevo</span><br><span style="font-family:'Great Vibes',cursive;font-size:1.6em;color:var(--gold-l);">Desiderarti</span></p>
+        <a class="book-btn book-btn-red" href="https://amzn.eu/d/07qnYPeI" target="_blank" rel="noopener">♡ Leggi ora</a>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img src="images/volume-2.jpg" alt="Non Dovevo Sceglierti — Volume 2" loading="lazy">
+        </div>
+        <p class="vol-badge">VOLUME 2 · VENEZIA</p>
+        <p class="book-title"><span style="font-family:'Playfair Display',serif;font-weight:700;">Non Dovevo</span><br><span style="font-family:'Great Vibes',cursive;font-size:1.6em;color:var(--gold-l);">Sceglierti</span></p>
+        <a class="book-btn book-btn-red" href="https://amzn.eu/d/09wAw9dd" target="_blank" rel="noopener">♡ Leggi ora</a>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img src="images/volume-3.jpg" alt="Non Dovevo Perderti — Volume 3" loading="lazy">
+        </div>
+        <p class="vol-badge">VOLUME 3 · ROMA</p>
+        <p class="book-title"><span style="font-family:'Playfair Display',serif;font-weight:700;">Non Dovevo</span><br><span style="font-family:'Great Vibes',cursive;font-size:1.6em;color:var(--gold-l);">Perderti</span></p>
+        <a class="book-btn book-btn-red" href="https://amzn.eu/d/03jq6Srk" target="_blank" rel="noopener">♡ Leggi ora</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px;">
+      <div class="info-bar">
+        <div class="info-item">📖 GRATIS CON<br>KINDLE UNLIMITED</div>
+        <div class="info-item">📱 SMARTPHONE<br>TABLET · KINDLE</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FINAL CTA ══════════════════════════════════════════════ -->
+<section class="final-cta">
+  <h2 class="hero-title">
+    <span class="cuori">CUORI</span>
+    <span class="imp">IMPERFETTI</span>
+  </h2>
+  <div class="gold-line"></div>
+  <p class="final-tagline">
+    TRE CITTÀ. TRE SEGRETI.<br>UNA STORIA CHE NON TI LASCERÀ ANDARE.
+  </p>
+  <div class="final-btns">
+    <a class="btn-main" href="https://amzn.eu/d/07qnYPeI" target="_blank" rel="noopener">♡ &nbsp;INIZIA DAL VOLUME 1</a>
+    <a class="btn-secondary" href="#collana">SCOPRI TUTTA LA COLLANA &darr;</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<footer>
+  © 2026 Mario Relli · Tutti i diritti riservati
+</footer>
+
+</body>
+</html>
